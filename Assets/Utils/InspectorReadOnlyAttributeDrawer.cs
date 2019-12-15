@@ -66,6 +66,16 @@ public class InspectorReadOnlyAttributeDrawer : PropertyDrawer
             case SerializedPropertyType.BoundsInt:
                 EditorGUI.LabelField(position, label, new GUIContent(property.boundsIntValue.ToString()));
                 break;
+            case SerializedPropertyType.ObjectReference:
+                if (property.objectReferenceValue == null)
+                {
+                    EditorGUI.LabelField(position, label.text, "null");
+                }
+                else
+                {
+                    EditorGUI.LabelField(position, label.text, property.objectReferenceValue.ToString());
+                }
+                break;
             default:
                 EditorGUI.LabelField(position, label.text, "This property type is not supported");
                 break;
